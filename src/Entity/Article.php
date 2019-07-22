@@ -41,6 +41,11 @@ class Article
      */
     private $imageUrl;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $expireAt;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -102,6 +107,18 @@ class Article
     public function setImageUrl(?string $imageUrl): self
     {
         $this->imageUrl = $imageUrl;
+
+        return $this;
+    }
+
+    public function getExpireAt(): ?\DateTimeInterface
+    {
+        return $this->expireAt;
+    }
+
+    public function setExpireAt(\DateTimeInterface $expireAt): self
+    {
+        $this->expireAt = $expireAt;
 
         return $this;
     }

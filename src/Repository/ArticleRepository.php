@@ -19,6 +19,19 @@ class ArticleRepository extends ServiceEntityRepository
         parent::__construct($registry, Article::class);
     }
 
+    public function findByArticlePublishedAndExpired()
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.published = :pub')
+            ->setParameter('pub', 1)
+            ->andWhere('u.expireAt >= :date')
+            ->setParameter('date', new \DateTime('now'))
+            ->orderBy('u.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
     // /**
     //  * @return Article[] Returns an array of Article objects
     //  */

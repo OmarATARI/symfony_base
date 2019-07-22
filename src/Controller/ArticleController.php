@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ArticleController extends AbstractController
 {
     /**
-     * @Route("/article", name="article")
+     * @Route("/articles", name="articles")
      */
     public function index()
     {
@@ -20,6 +20,7 @@ class ArticleController extends AbstractController
         return $this->render('article/index.html.twig', [
             'articlesPublished' => $articleRepository->findBy(['published' => true]),
             'articlesNotPublished' => $articleRepository->findBy(['published' => false]),
+            //'articlesPublishedAndExpired' => $articleRepository->findBy(['published' => false]),
         ]);
     }
 }
