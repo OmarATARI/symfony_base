@@ -19,7 +19,7 @@ class ArticleRepository extends ServiceEntityRepository
         parent::__construct($registry, Article::class);
     }
 
-    public function findByArticlePublishedAndExpired()
+    public function findByArticlePublishedAndNotExpired()
     {
         return $this->createQueryBuilder('u')
             ->andWhere('u.published = :pub')

@@ -20,7 +20,7 @@ class ArticleController extends AbstractController
         return $this->render('article/index.html.twig', [
             'articlesPublished' => $articleRepository->findBy(['published' => true]),
             'articlesNotPublished' => $articleRepository->findBy(['published' => false]),
-            //'articlesPublishedAndExpired' => $articleRepository->findBy(['published' => false]),
+            'articlesPublishedAndNotExpired' => $articleRepository->findByArticlePublishedAndNotExpired(),
         ]);
     }
 }

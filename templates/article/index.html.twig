@@ -16,4 +16,11 @@
                 <li>Name : {{ article.name }}</li>
         {% endfor %}
 </ul>
+        <br><br><br><br><br>
+        <h1>Published And Not Expired</h1>
+<ul>
+        {% for article in articlesPublishedAndNotExpired %}
+                <li>Name : {{ article.name }}</li>
+        {% endfor %}
+</ul>
 {% endblock %}
