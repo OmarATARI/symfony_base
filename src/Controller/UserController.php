@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class UserController extends AbstractController
@@ -36,6 +37,19 @@ class UserController extends AbstractController
         return $this->render('user/index.html.twig', array(
             'users' => $userRepository->findAll(),
             'form' => $form->createView(),
+        ));
+    }
+
+    /**
+     * @Route("/user/{id}", name="user")
+     * @param UserRepository $userRepository
+     * @param Int $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function user_show(UserRepository $userRepository, Int $id) : Response
+    {
+        return $this->render('user/user_show.html.twig', array(
+            'user' => $userRepository->find($id),
         ));
     }
 }

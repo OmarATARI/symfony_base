@@ -28,7 +28,7 @@ class Article
     private $content;
 
     /**
-     * @Assert\Datetime()
+     * @Assert\DateTime()
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
@@ -44,7 +44,7 @@ class Article
     private $imageUrl;
 
     /**
-     * @Assert\Datetime()
+     * @Assert\DateTime()
      * @ORM\Column(type="datetime")
      */
     private $expireAt;

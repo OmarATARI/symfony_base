@@ -21,15 +21,6 @@ class ArticleController extends AbstractController
      */
     public function index(Request $request, ArticleRepository $articleRepository, EntityManagerInterface $em)
     {
-/*        $articleRepository = $this->getDoctrine()->getManager()->getRepository(Article::class);
-
-        $articleRepository->findBy(['published' => true]);
-
-        return $this->render('article/index.html.twig', [
-            'articlesPublished' => $articleRepository->findBy(['published' => true]),
-            'articlesNotPublished' => $articleRepository->findBy(['published' => false]),
-            'articlesPublishedAndNotExpired' => $articleRepository->findByArticlePublishedAndNotExpired(),
-        ]);*/
         $article = new Article();
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);

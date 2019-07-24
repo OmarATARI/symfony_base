@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Author details {% endblock %}
+
+{% block body %}
+    <br><br><br><br><br>
+    <h1>Author: {{ user.firstName }} {{ user.lastName }}</h1>
+    <ul>
+        firstName : {{ user.firstName }}
+        <br>
+        LastName : {{ user.lastName  }}
+        <br>
+        email : {{ user.email  }}
+        <br><br>
+    </ul>
+
+    <h2>{{ user.firstName }}'s articles</h2>
+    <ul>
+        {% for article in user.articles %}
+            <li>{{ article.name }}</li>
+                {{ article.content }}
+        {% endfor %}
+    </ul>
+{% endblock %}
