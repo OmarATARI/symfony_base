@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
@@ -27,6 +28,7 @@ class Article
     private $content;
 
     /**
+     * @Assert\Datetime()
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
@@ -42,9 +44,15 @@ class Article
     private $imageUrl;
 
     /**
+     * @Assert\Datetime()
      * @ORM\Column(type="datetime")
      */
     private $expireAt;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="articles")
+     */
+    private $user;
 
     public function getId(): ?int
     {
@@ -119,6 +127,18 @@ class Article
     public function setExpireAt(\DateTimeInterface $expireAt): self
     {
         $this->expireAt = $expireAt;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

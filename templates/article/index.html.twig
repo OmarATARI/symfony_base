@@ -3,24 +3,26 @@
 {% block title %}Hello ArticleController!{% endblock %}
 
 {% block body %}
-        <h1>Article Published</h1>
-<ul>
-    {% for article in articlesPublished %}
-        <li>Name : {{ article.name }}</li>
-    {% endfor %}
-</ul>
-        <br><br><br><br><br>
-        <h1>Article Not Published</h1>
-<ul>
-        {% for article in articlesNotPublished %}
-                <li>Name : {{ article.name }}</li>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+    <br><br><br><br><br>
+    <h1>Liste des articles</h1>
+    <ul>
+        {% for article in articles %}
+            <li>name : {{ article.name }}</li>
+            <li>createdAt : {{ article.createdAt|date }}</li>
+            <li>imageUrl : {{ article.imageUrl }}</li>
+            <li>content : {{ article.content }}</li>
+                {% if article.user %}
+                    <li>firstName : {{ article.user.firstName }}</li>
+                    <li>lastName : {{ article.user.lastName }}</li>
+                    <li>email : {{ article.user.email }}</li>
+                {% else %}
+                    <li>user : No user</li>
+                {% endif %}
+            <br><br>
         {% endfor %}
-</ul>
-        <br><br><br><br><br>
-        <h1>Published And Not Expired</h1>
-<ul>
-        {% for article in articlesPublishedAndNotExpired %}
-                <li>Name : {{ article.name }}</li>
-        {% endfor %}
-</ul>
+    </ul>
 {% endblock %}
