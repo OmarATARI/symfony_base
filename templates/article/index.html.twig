@@ -22,6 +22,7 @@
                 {% else %}
                     <li>user : No user</li>
                 {% endif %}
+                <a href="{{ path('article_remove', {'id': article.id}) }}">Supprimer l'article</a>
             <br><br>
         {% endfor %}
     </ul>

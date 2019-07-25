@@ -12,6 +12,20 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ArticleController extends AbstractController
 {
+
+    /**
+     * @Route("/article/remove/{id}", name="article_remove")
+     * @param Article $article
+     * @param EntityManagerInterface $em
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function remove(Article $article, EntityManagerInterface $em)
+    {
+        $em->remove($article);
+        $em->flush();
+        return $this->redirectToRoute('home');
+    }
+
     /**
      * @Route("/articles", name="articles")
      * @param Request $request

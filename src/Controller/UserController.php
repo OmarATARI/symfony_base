@@ -48,8 +48,22 @@ class UserController extends AbstractController
      */
     public function user_show(UserRepository $userRepository, Int $id) : Response
     {
-        return $this->render('user/user_show.html.twig', array(
+        return $this->render('user/show.html.twig', array(
             'user' => $userRepository->find($id),
+        ));
+    }
+
+    /**
+     * @Route("/user/name/{name}", name="user_by_name")
+     * @param UserRepository $userRepository
+     * @param String $name
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function user_show_first_name(UserRepository $userRepository, String $name) : Response
+    {
+        return $this->render('user/show_by_name.html.twig', array(
+
+            'user' => $userRepository->findOneBy(array('firstName' => $name)),
         ));
     }
 }

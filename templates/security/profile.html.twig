@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Profile {% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+    {{ form_row(form.firstName) }}
+    {{ form_row(form.lastName) }}
+    {{ form_row(form.birthday) }}
+    {{ form_end(form) }}
+
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <p>FirstName: {{ app.user.firstName }}</p>
+        <p>LastName: {{ app.user.lastName }}</p>
+        <p>Email: {{ app.user.email }}</p>
+    {% else %}
+        <p>Welcome Anonymous</p>
+    {% endif %}
+{% endblock %}

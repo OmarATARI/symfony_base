@@ -1,0 +1,53 @@
+1) git clone https://github.com/cvilleger/symfony-demo .
+
+2) copy env.dist to .env dans le dossier crée
+
+3) dans le dossier sur ta console
+docker-compose up -d
+ docker-compose exec web composer install
+
+5) check localhost sur le navigateur
+
+6) docker-compose exec web composer require --dev symfony/profiler-pack
+
+7) docker-compose exec web composer require  maker --dev
+
+8) composer req orm
+
+9) docker-compose exec web php bin/console make:entity
+
+10) docker-compose exec web php bin/console make:controller
+
+11) docker-compose exec web php bin/console doctrine:schema:update --force
+
+ajouter une variable de date expirated_at ==> populer dans la base
+sans utiliser findbyid
+utiliser function custom ==> findArticlePublishedAndNotExpired 
+
+andWhere a.published = true
+a.published_at > a.date etc 
+
+(ArticleRepository)
+
+
+PARTIE USER
+
+docker-compose exec web php bin/console make:entity user
+
+docker-compose exec web php bin/console make:controller
+
+docker-compose exec web php bin/console d:s:u --force
+
+composer req form validator
+
+php bin/console make:form
+
+PARTIE ONE TO MANY USER ==> ARTICLES
+
+docker-compose exec web php bin/console make:entity User
+field_type == OneToMany
+user.articles == collectionType 
+article.user = userType
+
+docker-compose exec web php bin/console make:form
+
