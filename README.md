@@ -25,3 +25,5 @@ cp .env.dist .env
 docker-compose up -d
 docker-compose exec --user=application web bash
 ```
+
+[![Build Status](https://travis-ci.com/OmarATARI/symfony_base.svg?branch=master)](https://travis-ci.com/OmarATARI/symfony_base)
